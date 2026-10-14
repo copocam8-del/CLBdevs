@@ -6,6 +6,7 @@ import { Seo } from '../components/Seo'
 import { Services } from '../components/Services'
 import { Team } from '../components/Team'
 import { site } from '../data/site'
+import { useReveal } from '../hooks/useReveal'
 
 const organizationLd = {
   '@context': 'https://schema.org',
@@ -19,6 +20,8 @@ const organizationLd = {
 }
 
 export default function Home() {
+  useReveal()
+
   return (
     <>
       <Seo />

@@ -1,7 +1,8 @@
 import { AlertCircle, CheckCircle2, Loader2, Mail, MapPin } from 'lucide-react'
-import { useRef, useState, type FormEvent } from 'react'
+import { useRef, useState, type CSSProperties, type FormEvent } from 'react'
 import { services } from '../data/services'
 import { site } from '../data/site'
+import { InstagramIcon, WhatsAppIcon } from './BrandIcons'
 import { CONTACT_LIMITS, validateContact, type ContactErrors, type ContactField } from '../lib/contact'
 import { SectionHeading } from './SectionHeading'
 
@@ -12,7 +13,7 @@ type Status =
   | { type: 'error'; message: string }
 
 const FIELD_ORDER: ContactField[] = ['name', 'email', 'phone', 'service', 'message']
-const GENERIC_ERROR = `No pudimos enviar tu mensaje. Probá de nuevo en un rato o escribinos a ${site.email}.`
+const GENERIC_ERROR = `No pudimos enviar el mensaje. Intentá nuevamente más tarde o escribinos a ${site.email}.`
 
 const inputClass =
   'mt-2 block w-full rounded-lg border bg-white px-3 py-2.5 text-ink shadow-sm placeholder:text-slate-500 focus:border-brand-600 focus:outline-none focus-visible:outline-3 focus-visible:outline-brand-500'
@@ -89,29 +90,69 @@ export function Contact() {
   return (
     <section id="contacto" aria-labelledby="contacto-title" className="bg-slate-50 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading
-          id="contacto-title"
-          eyebrow="Contacto"
-          title="Contanos tu proyecto"
-          description="Completá el formulario y te respondemos dentro de las 48 horas hábiles. Sin compromiso."
-        />
+        <div data-reveal>
+          <SectionHeading
+            id="contacto-title"
+            eyebrow="Contacto"
+            title="Hablemos de tu proyecto"
+            description="Completá el formulario y te responderemos dentro de las 48 horas hábiles. La consulta no implica compromiso."
+          />
+        </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-3">
-          <aside className="space-y-6 lg:pt-2">
+          <aside data-reveal className="space-y-6 lg:pt-2">
+            {site.whatsapp && (
+              <a
+                href={site.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#1a9e4b] px-6 py-3 font-semibold text-white shadow-md shadow-[#1a9e4b]/25 transition hover:bg-[#168a41] hover:shadow-lg motion-safe:hover:-translate-y-0.5"
+              >
+                <WhatsAppIcon className="size-5" />
+                Escribinos por WhatsApp
+                <span className="sr-only"> (se abre en una pestaña nueva)</span>
+              </a>
+            )}
             <div className="flex gap-3">
-              <Mail aria-hidden="true" className="size-6 shrink-0 text-brand-600" />
-              <div>
+              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-700">
+                <Mail aria-hidden="true" className="size-5" />
+              </span>
+              <div className="min-w-0">
                 <h3 className="font-semibold text-ink">Email</h3>
-                <a href={`mailto:${site.email}`} className="text-slate-700 underline-offset-4 hover:underline">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="break-all text-slate-700 underline-offset-4 hover:text-brand-700 hover:underline"
+                >
                   {site.email}
                 </a>
               </div>
             </div>
+            {site.instagram && (
+              <div className="flex gap-3">
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-700">
+                  <InstagramIcon className="size-5" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-semibold text-ink">Instagram</h3>
+                  <a
+                    href={site.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-700 underline-offset-4 hover:text-brand-700 hover:underline"
+                  >
+                    @{site.instagram.split('/').pop()}
+                    <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                  </a>
+                </div>
+              </div>
+            )}
             <div className="flex gap-3">
-              <MapPin aria-hidden="true" className="size-6 shrink-0 text-brand-600" />
+              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-700">
+                <MapPin aria-hidden="true" className="size-5" />
+              </span>
               <div>
                 <h3 className="font-semibold text-ink">Ubicación</h3>
-                <p className="text-slate-700">{site.location} · Trabajamos de forma remota</p>
+                <p className="text-slate-700">{site.location} · Atención remota en todo el país y el exterior</p>
               </div>
             </div>
           </aside>
@@ -120,6 +161,8 @@ export function Contact() {
             ref={formRef}
             onSubmit={handleSubmit}
             noValidate
+            data-reveal
+            style={{ '--reveal-delay': '100ms' } as CSSProperties}
             aria-describedby="contact-required-note"
             className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 lg:col-span-2"
           >
@@ -182,7 +225,7 @@ export function Contact() {
                       {s.title}
                     </option>
                   ))}
-                  <option value="Otro">Otro / No estoy seguro</option>
+                  <option value="Otro">Otro / A definir</option>
                 </select>
                 {fieldError('service')}
               </div>
@@ -196,7 +239,7 @@ export function Contact() {
                   rows={5}
                   required
                   maxLength={CONTACT_LIMITS.message.max}
-                  placeholder="Contanos brevemente tu idea, plazos y cualquier dato que nos ayude."
+                  placeholder="Describí brevemente el proyecto, los plazos estimados y cualquier dato relevante."
                 />
                 {fieldError('message')}
               </div>
@@ -212,7 +255,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700 enabled:motion-safe:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {submitting && <Loader2 aria-hidden="true" className="size-5 animate-spin" />}
                 {submitting ? 'Enviando…' : 'Enviar mensaje'}
@@ -222,7 +265,7 @@ export function Contact() {
                 {status.type === 'success' && (
                   <p className="flex items-center gap-2 font-medium text-green-800">
                     <CheckCircle2 aria-hidden="true" className="size-5 shrink-0" />
-                    ¡Gracias! Recibimos tu mensaje y te vamos a responder a la brevedad.
+                    Gracias. Recibimos tu mensaje y te responderemos a la brevedad.
                   </p>
                 )}
                 {status.type === 'error' && (

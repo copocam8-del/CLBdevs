@@ -51,20 +51,20 @@ export function validateContact(raw: unknown): ValidationResult {
   const errors: ContactErrors = {}
   const L = CONTACT_LIMITS
 
-  if (data.name.length < L.name.min) errors.name = 'Contanos tu nombre.'
+  if (data.name.length < L.name.min) errors.name = 'Ingresá tu nombre.'
   else if (data.name.length > L.name.max) errors.name = `Máximo ${L.name.max} caracteres.`
 
-  if (!data.email) errors.email = 'Necesitamos tu email para responderte.'
+  if (!data.email) errors.email = 'Ingresá tu email para poder responderte.'
   else if (data.email.length > L.email.max || !EMAIL_RE.test(data.email))
-    errors.email = 'Revisá el email, parece que no es válido.'
+    errors.email = 'Ingresá un email válido.'
 
   if (data.phone && (data.phone.length > L.phone.max || !/^[\d\s()+\-.]+$/.test(data.phone)))
-    errors.phone = 'Revisá el teléfono (solo números, espacios y + - ( )).'
+    errors.phone = 'Ingresá un teléfono válido (solo números, espacios y + - ( )).'
 
   if (data.service.length > L.service.max) errors.service = 'Opción inválida.'
 
   if (data.message.length < L.message.min)
-    errors.message = `Escribí al menos ${L.message.min} caracteres así entendemos qué necesitás.`
+    errors.message = `El mensaje debe tener al menos ${L.message.min} caracteres.`
   else if (data.message.length > L.message.max)
     errors.message = `Máximo ${L.message.max} caracteres.`
 

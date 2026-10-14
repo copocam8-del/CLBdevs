@@ -17,10 +17,11 @@ React 19 + TypeScript + Vite 8, Tailwind CSS 4, react-router-dom 7 y prerender e
 
 Todo el texto editable está en `src/data/`, sin tocar componentes:
 
-- `site.ts`: nombre, email, ubicación, links del menú y redes.
+- `site.ts`: nombre, email, ubicación, links del menú y redes. Arriba de todo están `instagramUser` y
+  `whatsappNumber`: mientras estén vacíos, los botones de Instagram y WhatsApp no se muestran.
 - `services.ts`: las 4 tarjetas de servicios (íconos de `lucide-react`).
 - `steps.ts`: los 4 pasos de "Cómo trabajamos".
-- `team.ts`: integrantes del equipo (`photo` opcional, en `/public`).
+- `team.ts`: integrantes del equipo (`photo` opcional, en `/public/team`; sin foto se muestran las iniciales).
 - `projects.ts`: proyectos (`image` y `url` opcionales).
 
 ## Formulario de contacto

@@ -6,28 +6,28 @@ export const services: Service[] = [
     icon: LayoutTemplate,
     title: 'Desarrollo web',
     description:
-      'Sitios institucionales rápidos, prolijos y fáciles de mantener, pensados para que te encuentren en Google.',
-    features: ['Diseño responsive', 'SEO técnico', 'Panel para editar contenido'],
+      'Sitios institucionales de alto rendimiento, fáciles de mantener y optimizados para posicionarse en buscadores.',
+    features: ['Diseño responsive', 'SEO técnico', 'Contenido administrable'],
   },
   {
     icon: Rocket,
     title: 'Landing pages',
     description:
-      'Páginas enfocadas en convertir: un mensaje claro, una llamada a la acción y métricas para medir resultados.',
-    features: ['Carga ultrarrápida', 'Formularios integrados', 'Analítica y píxeles'],
+      'Páginas orientadas a la conversión, con un mensaje claro, llamadas a la acción efectivas y métricas para medir resultados.',
+    features: ['Carga optimizada', 'Formularios integrados', 'Analítica y píxeles'],
   },
   {
     icon: Cpu,
     title: 'Sistemas a medida',
     description:
-      'Software hecho para tu forma de trabajar: gestión de turnos, stock, clientes o lo que tu operación necesite.',
+      'Software diseñado según los procesos de cada organización: gestión de turnos, stock, clientes y operaciones.',
     features: ['Paneles de administración', 'APIs e integraciones', 'Usuarios y permisos'],
   },
   {
     icon: Sparkles,
     title: 'Soluciones digitales',
     description:
-      'Automatizamos tareas, conectamos herramientas y te acompañamos a digitalizar procesos que hoy hacés a mano.',
+      'Automatización de tareas, integración de herramientas y digitalización de procesos manuales.',
     features: ['Automatizaciones', 'Integración de pagos', 'Soporte y mantenimiento'],
   },
 ]

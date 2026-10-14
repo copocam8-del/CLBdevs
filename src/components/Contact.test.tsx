@@ -22,7 +22,7 @@ describe('<Contact />', () => {
 
     const name = screen.getByLabelText(/nombre/i)
     expect(name).toHaveAttribute('aria-invalid', 'true')
-    expect(name).toHaveAccessibleDescription(/contanos tu nombre/i)
+    expect(name).toHaveAccessibleDescription(/ingresá tu nombre/i)
     expect(name).toHaveFocus()
     expect(fetchMock).not.toHaveBeenCalled()
   })

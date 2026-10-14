@@ -4,26 +4,26 @@ import type { Step } from './types'
 export const steps: Step[] = [
   {
     icon: MessagesSquare,
-    title: 'Charlamos',
+    title: 'Relevamiento',
     description:
-      'Nos contás tu idea, tus objetivos y tus tiempos. Te devolvemos una propuesta clara, con alcance y presupuesto.',
+      'Analizamos los objetivos, el público y los plazos del proyecto, y presentamos una propuesta con alcance, cronograma y presupuesto definidos.',
   },
   {
     icon: PenTool,
-    title: 'Diseñamos',
+    title: 'Diseño',
     description:
-      'Armamos la estructura y el diseño visual. Lo revisamos juntos hasta que quede como lo imaginaste.',
+      'Definimos la arquitectura de la información y el diseño visual, y lo validamos con el cliente antes de avanzar con el desarrollo.',
   },
   {
     icon: Code2,
-    title: 'Desarrollamos',
+    title: 'Desarrollo',
     description:
-      'Construimos el producto con tecnologías modernas y te mostramos avances en cada etapa.',
+      'Construimos la solución con tecnologías actuales y buenas prácticas, con entregas parciales para revisar el avance en cada etapa.',
   },
   {
     icon: Send,
-    title: 'Lanzamos y acompañamos',
+    title: 'Lanzamiento y soporte',
     description:
-      'Publicamos, medimos y seguimos a tu lado con soporte, mejoras y mantenimiento.',
+      'Publicamos, medimos el rendimiento y brindamos soporte, mantenimiento y mejoras continuas.',
   },
 ]

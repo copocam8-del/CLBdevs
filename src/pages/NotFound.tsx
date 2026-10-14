@@ -8,9 +8,9 @@ export default function NotFound() {
       <section aria-labelledby="notfound-title" className="mx-auto max-w-2xl px-4 py-32 text-center sm:px-6">
         <p className="text-sm font-semibold text-brand-600">Error 404</p>
         <h1 id="notfound-title" className="mt-2 text-4xl font-bold tracking-tight text-ink">
-          No encontramos esta página
+          Página no encontrada
         </h1>
-        <p className="mt-4 text-lg text-slate-600">Puede que el link esté roto o que la página se haya movido.</p>
+        <p className="mt-4 text-lg text-slate-600">La dirección puede ser incorrecta o la página puede haber sido trasladada.</p>
         <Link
           to="/"
           className="mt-8 inline-flex rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white hover:bg-brand-700"

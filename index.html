@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#0b1020" />
+    <script>
+      // Habilita las animaciones de aparición. Si el JS de la app no llega a cargar,
+      // se quita la clase para que el contenido nunca quede oculto.
+      document.documentElement.classList.add('js')
+      setTimeout(function () {
+        if (!window.__revealReady) document.documentElement.classList.remove('js')
+      }, 4000)
+    </script>
   </head>
   <body>
     <div id="root"></div>

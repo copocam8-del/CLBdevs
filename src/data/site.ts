@@ -1,11 +1,23 @@
+// TODO: completar con el usuario de Instagram (sin @) y el número de WhatsApp
+// (solo dígitos, sin el 549 inicial: p. ej. '1123456789'). Mientras estén vacíos,
+// los botones correspondientes no se muestran.
+const instagramUser: string = ''
+const whatsappNumber: string = ''
+
+const whatsappMessage = 'Hola CLB, quiero consultar por un proyecto'
+
 export const site = {
   name: 'CLB Developers',
   url: 'https://clbdevelopers.com',
   tagline: 'Desarrollo web y soluciones digitales a medida',
   description:
-    'Somos CLB Developers: diseñamos y desarrollamos sitios web, landing pages, sistemas a medida y soluciones digitales para que tu negocio crezca.',
-  email: 'hola@clbdevelopers.com',
+    'CLB Developers diseña y desarrolla sitios web, landing pages, sistemas a medida y soluciones digitales orientadas a resultados.',
+  email: 'clbdevelopers@outlook.es',
   location: 'Buenos Aires, Argentina',
+  instagram: instagramUser ? `https://instagram.com/${instagramUser}` : null,
+  whatsapp: whatsappNumber
+    ? `https://wa.me/549${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+    : null,
   nav: [
     { label: 'Servicios', href: '#servicios' },
     { label: 'Cómo trabajamos', href: '#proceso' },
@@ -13,8 +25,8 @@ export const site = {
     { label: 'Proyectos', href: '#proyectos' },
   ],
   social: [
-    { label: 'Instagram', href: 'https://instagram.com/clbdevelopers' },
+    ...(instagramUser ? [{ label: 'Instagram', href: `https://instagram.com/${instagramUser}` }] : []),
     { label: 'LinkedIn', href: 'https://www.linkedin.com/company/clbdevelopers' },
     { label: 'GitHub', href: 'https://github.com/clbdevelopers' },
   ],
-} as const
+}
