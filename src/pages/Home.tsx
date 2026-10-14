@@ -15,7 +15,7 @@ const organizationLd = {
   url: site.url,
   email: site.email,
   description: site.description,
-  logo: `${site.url}/favicon.svg`,
+  logo: new URL('/icon-512.png', site.url).toString(),
   ...(site.social.length > 0 && { sameAs: site.social.map((s) => s.href) }),
 }
 

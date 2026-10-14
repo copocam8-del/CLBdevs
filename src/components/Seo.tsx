@@ -11,6 +11,7 @@ interface SeoProps {
 export function Seo({ title, description = site.description, path = '/', noindex }: SeoProps) {
   const fullTitle = title ? `${title} | ${site.name}` : `${site.name} — ${site.tagline}`
   const url = new URL(path, site.url).toString()
+  const image = new URL('/og-image.png', site.url).toString()
 
   return (
     <Head>
@@ -24,7 +25,12 @@ export function Seo({ title, description = site.description, path = '/', noindex
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={site.name} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={image} />
     </Head>
   )
 }
