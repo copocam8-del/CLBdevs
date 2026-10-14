@@ -56,7 +56,8 @@ export async function handleContact(request: Request, deps: ContactDeps = {}): P
   }
 
   const result = validateContact(payload)
-  if (!result.ok) return json({ error: 'Revisá los datos del formulario.', errors: result.errors }, 400)
+  // '=== false' y no '!result.ok': el chequeo de tipos de Vercel corre sin strict, y ahí '!' no estrecha el tipo.
+  if (result.ok === false) return json({ error: 'Revisá los datos del formulario.', errors: result.errors }, 400)
 
   // Honeypot completado: respondemos OK sin enviar nada para no darle pistas al bot.
   if (result.data.website) return json({ ok: true })
