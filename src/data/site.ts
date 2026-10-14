@@ -3,8 +3,8 @@ import { SITE_URL } from './siteUrl'
 // TODO: completar con el usuario de Instagram (sin @) y el número de WhatsApp
 // (solo dígitos, sin el 549 inicial: p. ej. '1123456789'). Mientras estén vacíos,
 // los botones correspondientes no se muestran.
-const instagramUser: string = ''
-const whatsappNumber: string = ''
+const instagramUser: string = 'clbdevs'
+const whatsappNumber: string = '1169378663'
 
 const whatsappMessage = 'Hola CLB, quiero consultar por un proyecto'
 
