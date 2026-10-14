@@ -1,3 +1,5 @@
+import { SITE_URL } from './siteUrl'
+
 // TODO: completar con el usuario de Instagram (sin @) y el número de WhatsApp
 // (solo dígitos, sin el 549 inicial: p. ej. '1123456789'). Mientras estén vacíos,
 // los botones correspondientes no se muestran.
@@ -8,7 +10,7 @@ const whatsappMessage = 'Hola CLB, quiero consultar por un proyecto'
 
 export const site = {
   name: 'CLB Developers',
-  url: 'https://clbdevelopers.com',
+  url: SITE_URL,
   tagline: 'Desarrollo web y soluciones digitales a medida',
   description:
     'CLB Developers diseña y desarrolla sitios web, landing pages, sistemas a medida y soluciones digitales orientadas a resultados.',
@@ -26,7 +28,5 @@ export const site = {
   ],
   social: [
     ...(instagramUser ? [{ label: 'Instagram', href: `https://instagram.com/${instagramUser}` }] : []),
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/clbdevelopers' },
-    { label: 'GitHub', href: 'https://github.com/clbdevelopers' },
   ],
 }

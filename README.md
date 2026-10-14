@@ -17,6 +17,8 @@ React 19 + TypeScript + Vite 8, Tailwind CSS 4, react-router-dom 7 y prerender e
 
 Todo el texto editable está en `src/data/`, sin tocar componentes:
 
+- `siteUrl.ts`: URL pública del sitio. Es la única fuente para el canonical, Open Graph, JSON-LD,
+  `robots.txt` y `sitemap.xml` (estos dos se generan en el build). Al tener dominio propio, cambiar solo esto.
 - `site.ts`: nombre, email, ubicación, links del menú y redes. Arriba de todo están `instagramUser` y
   `whatsappNumber`: mientras estén vacíos, los botones de Instagram y WhatsApp no se muestran.
 - `services.ts`: las 4 tarjetas de servicios (íconos de `lucide-react`).

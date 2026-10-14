@@ -32,16 +32,18 @@ export function Footer() {
             </li>
             <li>{site.location}</li>
           </ul>
-          <ul className="mt-4 flex flex-wrap gap-4 text-sm">
-            {site.social.map((social) => (
-              <li key={social.href}>
-                <a href={social.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                  {social.label}
-                  <span className="sr-only"> (se abre en una pestaña nueva)</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          {site.social.length > 0 && (
+            <ul className="mt-4 flex flex-wrap gap-4 text-sm">
+              {site.social.map((social) => (
+                <li key={social.href}>
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                    {social.label}
+                    <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
       <p className="border-t border-white/10 py-6 text-center text-xs text-slate-400">
