@@ -1,0 +1,9 @@
+node_modules
+dist
+.vite-react-ssg-temp
+.vercel
+coverage
+
+# Variables de entorno (incluye el token OIDC que baja `vercel link`)
+.env*
+!.env.example
