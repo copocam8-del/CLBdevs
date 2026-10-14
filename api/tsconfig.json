@@ -1,0 +1,9 @@
+{
+  // Vercel busca el tsconfig más cercano a cada función para chequear tipos. Sin este
+  // archivo usa el tsconfig.json raíz (solo referencias, sin strict ni tipos de Node).
+  "extends": "../tsconfig.node.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "../node_modules/.tmp/tsconfig.api.tsbuildinfo"
+  },
+  "include": ["."]
+}

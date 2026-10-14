@@ -3,17 +3,13 @@ import { sendContactEmail, type MailConfig } from './_lib/brevo.js'
 import { createRateLimiter, getClientIp } from './_lib/rate-limit.js'
 
 const MAX_BODY_BYTES = 20_000
-
-// Tipo propio en vez de NodeJS.ProcessEnv: el chequeo de tipos de Vercel para /api no carga @types/node.
-type Env = Record<string, string | undefined>
-
 const limiter = createRateLimiter({ limit: 5, windowMs: 10 * 60 * 1000 })
 
 function json(body: unknown, status = 200, headers: Record<string, string> = {}) {
   return Response.json(body, { status, headers: { 'cache-control': 'no-store', ...headers } })
 }
 
-function mailConfigFromEnv(env: Env): MailConfig | null {
+function mailConfigFromEnv(env: NodeJS.ProcessEnv): MailConfig | null {
   const apiKey = env.BREVO_API_KEY
   const to = env.CONTACT_TO_EMAIL
   const from = env.CONTACT_FROM_EMAIL
@@ -22,7 +18,7 @@ function mailConfigFromEnv(env: Env): MailConfig | null {
 }
 
 export interface ContactDeps {
-  env?: Env
+  env?: NodeJS.ProcessEnv
   fetchImpl?: typeof fetch
   rateLimit?: ReturnType<typeof createRateLimiter>
 }
