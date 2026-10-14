@@ -52,3 +52,5 @@ vite-react-ssg 0.9.2 declara soporte para react-router-dom 6 e importa `react-ro
 un subpath que no existe en la v7 (ahí esas APIs se exportan desde la raíz). `patches/` contiene un
 parche de una línea que se aplica solo en `postinstall` con `patch-package`. Por eso la versión
 está fijada exacta: si se actualiza vite-react-ssg, hay que revisar o regenerar el parche.
+
+<!-- Prueba de deploy automático desde GitHub (2026-10-14). -->
